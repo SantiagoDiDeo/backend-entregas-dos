@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProductsController } from '../controllers/productController.js';
+import { getAllProductsController } from '../controllers/productController.js';
 const {Router} = express;
 const infoRouter = Router()
 import os from 'os';
@@ -12,7 +12,7 @@ import compression from 'compression';
 
 
 infoRouter.get('/',  (req, res) => {
-    res.render('form', {product: getProductsController(), productExist: true});
+    res.render('form', {product: getAllProductsController(), productExist: true});
   });
 
   infoRouter.get('/info', compression(), (req, res) => {

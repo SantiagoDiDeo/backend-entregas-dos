@@ -10,7 +10,7 @@ import logger from '../logger/logger.js';
 import  sendEmail  from '../messages/email.js';
 import  sendWhatsapp  from '../messages/whatsapp.js';
 import  sendSMS  from '../messages/message.js';
-import  {getProductsController}  from '../controllers/productController.js';
+import  {getAllProductsController}  from '../controllers/productController.js';
 
 sessRouter.use(passport.initialize());
 sessRouter.use(passport.session());

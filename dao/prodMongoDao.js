@@ -1,14 +1,15 @@
 import connectToDb from '../DB/config/connectToDb.js';
 import { productModel } from '../DB/model/modelMongo.js';
- export class prodMongoDao {
+
+export class prodMongoDao {
 
       ID_FIELD = '_id';
 
       saveProduct = async (productToAdd) => {
+        await connectToDb();        
         const product = new productModel(productToAdd);
-        const addedProduct = await product.save();
-        return addedProduct;
-        
+        await product.save();
+        return product;
     };
 
     getAllProducts = async () => {
@@ -18,7 +19,6 @@ import { productModel } from '../DB/model/modelMongo.js';
     };
 
     getProductById = async (id) => {
-      
       await connectToDb();
       const productById = await productModel.findOne({ _id: id })
       return productById;
@@ -26,9 +26,8 @@ import { productModel } from '../DB/model/modelMongo.js';
 
     deleteProduct = async (id) => {
       await connectToDb();
-      const productToDelete = await productModel.deleteOne({ _id: id })
-      return productToDelete; 
-      
+      const deletedProduct = await productModel.deleteOne(id)
+      return deletedProduct; 
     };
 
     deleteAllProducts = async ()=> {return await productModel.deleteMany()};

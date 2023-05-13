@@ -1,7 +1,7 @@
 import express from 'express';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
-import   {mongoUrl}  from '../../enviroments/enviroment.js';
+import   {mongoUrl}  from '../../environments/environment.js';
 import logger from '../../logger/logger.js';
 import mongoose from 'mongoose';
 
@@ -15,8 +15,8 @@ const connectMongo = async () => {
           user: "santiagodideo", // PONE UN USUARIO ROOT PARA TRABAJAR DE MONGO ATLAS
           pass: "santiago", // OBVIAMENTE EL PASSWORD
       });
-      console.log("MongoDB connected succesfully");
-      logger.info("MongoDB connected succesfully");
+      console.log("MongoDB connected successfully");
+      logger.info("MongoDB connected successfully");
   } catch (error) {
       logger.error({ error });
   }
@@ -39,8 +39,7 @@ const connectToDb = async () => {
       }));
     
           isConnected = true;
-          logger.info('MongoAtlasDB Connected succesfully');
-           
+          logger.info('MongoAtlasDB Connected successfully');
     return;
   } else {
     

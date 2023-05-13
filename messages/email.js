@@ -1,5 +1,5 @@
 import nodemailer  from'nodemailer';
-import { emailService, emailPort, emailUser }  from'../enviroments/enviroment.js';
+import { emailService, emailPort, emailUser }  from'../environments/environment.js';
 
 const transporter = nodemailer.createTransport({
     service: emailService,

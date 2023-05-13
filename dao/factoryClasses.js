@@ -1,9 +1,9 @@
-import  {persistence}  from '../enviroments/enviroment.js';
-import { prodMongoDao } from './prodMongoDao.js';
+import  {persistence}  from '../environments/environment.js';
+import {prodMongoDao} from './prodMongoDao.js';
 import {userMongoDao} from './userMongoDao.js';
 import Chats from './chatClass.js';
 import ChatsMemory from './chatClassMemory.js';
-import {ProdMemory} from './prodClassMemory.js';
+import {ProdMemoryDao} from './prodMemoryDao.js';
 import {UserMemoryDao} from './userMemoryDao.js';
 
 
@@ -14,7 +14,7 @@ export const getDao = async() => {
   let productsDao, usersDao, chatsDao;
   
     if ( persistence === 'MEMORY') {
-      productsDao = new ProdMemory();
+      productsDao = new ProdMemoryDao();
       usersDao =  new UserMemoryDao();
       chatsDao =  ChatsMemory;
 

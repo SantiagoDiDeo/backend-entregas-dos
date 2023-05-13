@@ -25,7 +25,7 @@ const benchmark = () => {
 
     logger.info('running benchmarks..');
 
-    run('http://localhost:8081/info');
+    run('http://localhost:8080/info');
 
 };
 

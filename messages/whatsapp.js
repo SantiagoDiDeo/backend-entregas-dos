@@ -1,4 +1,4 @@
-import { sidAccount, authToken } from '../enviroments/enviroment.js';
+import { sidAccount, authToken } from '../environments/environment.js';
 import logger from '../logger/logger.js';
 import twilio from 'twilio';
 

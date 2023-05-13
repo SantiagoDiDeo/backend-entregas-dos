@@ -1,8 +1,6 @@
 import express from  'express';
-import {addProductController, getProductsController, getProductByIdController, deleteProductController } from '../controllers/productController.js';
+import {addProductController, getAllProductsController, getProductByIdController, deleteProductByIdController } from '../controllers/productController.js';
 import { faker } from '@faker-js/faker';
-import  mockProducts  from '../class/mockClass.js';
-faker.locate = 'es';
 const { Router } = express;
 import passport from 'passport';
 import '../DB/config/auth.js';
@@ -16,7 +14,7 @@ prodRouter.use(passport.session());
 
 //get all products
 prodRouter.get('/', async ( req, res ) => {
-    const allProducts = await getProductsController();
+    const allProducts = await getAllProductsController();
     res.render('products', {product: allProducts, productExist: true});
 
 });
@@ -55,7 +53,7 @@ prodRouter.put('/:id', async ( req, res ) => {
 prodRouter.delete('/:id', async ( req, res ) => {
     const { id } = req.params;
 
-    if (await deleteProductController(id)) {
+    if (await deleteProductByIdController(id)) {
         res.send({ message: 'producto borrado'});
       } else {
         res.status(404).send({ error: 'producto no encontrado'});

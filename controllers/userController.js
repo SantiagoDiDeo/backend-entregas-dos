@@ -11,25 +11,26 @@ const getAllUsersController = async() => {
 
 const getUserControllerByUsername = async (username) => {
   const existentUser = await getUserByUsernameDto( username );
-  
-  if(existentUser) {
-    throw new Error(`User ${username} already exists`);
-  }
   return existentUser;
-}
+};
 
-const createUserController = async (user) => {
-  try {
-    if(user.username && user.password && user.email) {
-      const newUser = await createUserDto ( user );
-      console.log(newUser);
-      return newUser;
-    };
-    throw new Error('invalid user or missing data');
-  } catch (err) {
-    throw new Error(err);
-  }
+
+  const createUserController = async (user) => {
+    try {
+      const existingUser = await getUserControllerByUsername(user.username);
+      if (existingUser) {
+        throw new Error(`User "${user.username}" already exists`);
+      }
+      if (user.username && user.password && user.email) {
+        const newUser = await createUserDto(user);
+        return newUser;
+      }
+      throw new Error(`Missing data`);
+    } catch (err) {
+      throw new Error(err);
+    }
   };
+  
 
 const deleteUserController = async (id) => {
   const deleteUser = await deleteUserDto(id);

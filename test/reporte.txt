@@ -1,91 +1,39 @@
                     ---- USER ----
 
-  User controller
-MongoDB connected succesfully
-[]
-    ✔ should return empty array if no user is added (1075ms)
+   User controller MONGODB
+MongoDB connected successfully
+    ✔ should return array of users (1120ms)
+    ✔ should add a user (178ms)
+    ✔ should return user by username (55ms)
+    ✔ should delete user by id (215ms)
 
 
-  1 passing (1s)
+  4 passing (2s)
+----------------------------------
 
-------------------------------------------------------------
-
- User controller
-MongoDB connected succesfully
-user: {
-  email: 'test123456@mail.com',
-  username: 'test',
-  password: '123456',
-  cart: [],
-  _id: new ObjectId("64498574cc9f6aee24d66b0d"),
-  __v: 0
-}
-[
-  {
-    _id: new ObjectId("64498574cc9f6aee24d66b0d"),
-    email: 'test123456@mail.com',
-    username: 'test',
-    password: '123456',
-    cart: [],
-    __v: 0
-  }
-]
-    ✔ should return array of users (1142ms)
+ user controller MEMORY
+    ✔ should return an array of users or empty array
+    ✔ should add a user
+    ✔ should return user by username
+    ✔ should delete user by id
 
 
-  1 passing (1s)
+  4 passing (208ms)
+
+
 
     ------------------------------------------------------------
-
-    MongoDB connected succesfully
-[
-  {
-    _id: new ObjectId("64498574cc9f6aee24d66b0d"),
-    email: 'test123456@mail.com',
-    username: 'test',
-    password: '123456',
-    cart: [],
-    __v: 0
-  }
-]
-[]
-    ✔ should delete user by id (1019ms)
+                    ---- PRODUCT ----
+                    
+     product controller MONGODB
+MongoDB connected successfully
+    ✔ should return empty array if no product is added or an array of products (922ms)
+    ✔ should return a product added (151ms)
+    ✔ should return a product by id (62ms)
+    ✔ should delete product by id (169ms)
 
 
-  1 passing (1s)
+  4 passing (1s)
 
-    ------------------------------------------------------------
-
-
-
-
-                            ---- PRODUCTS ----
-
-
-  product controller
-MongoDB connected succesfully
-    ✔ should return empty array if no product is added (1008ms)
-
-
-  1 passing (1s)
-
-    ------------------------------------------------------------
-
-    product controller
-MongoDB connected succesfully
-    ✔ should return empty array if no product is added (988ms)
-    ✔ should return a product added (138ms)
-
-
-  2 passing (1s)
-
-  --------------------------------------------------------------
-
-  product controller
-MongoDB connected succesfully
-    ✔ should return a product by id (1085ms)
-
-
-  1 passing (1s)
 
 --------------------------------------------------------------

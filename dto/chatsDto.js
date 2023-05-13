@@ -1,4 +1,4 @@
-import {getDao} from '../class/factoryClasses.js';
+import {getDao} from '../dao/factoryClasses.js';
 
 
 const getChatsDto = async() => {

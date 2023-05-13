@@ -1,5 +1,4 @@
-import { getProductsDto, getProductsByIdDto, deleteAllProductsDto, addProductDto, deleteProductByIdDto } from '../dto/productsDto.js';
-import mongoose from 'mongoose';
+import { getAllProductsDto, getProductsByIdDto, deleteAllProductsDto, addProductDto, deleteProductByIdDto, updateProductDto } from '../dto/productsDto.js';
 
 const validateObject = ( object ) => { 
   return Object.values(object).includes('')
@@ -13,14 +12,16 @@ const imageUrl = ( url ) => {
 
 
 const addProductController = async ( productToAdd ) => {
+  try {
     const newProduct = await addProductDto( productToAdd);
-     
     return newProduct;
-
+  } catch (error) {
+    throw new Error(`${error}, non-added product`)
+  };
 };
 
-const getProductsController = async() => {
-  const getProducts = await getProductsDto();
+const getAllProductsController = async() => {
+  const getProducts = await getAllProductsDto({});
   if (getProducts.length === 0) {
     return [];
   };
@@ -28,23 +29,42 @@ const getProductsController = async() => {
 };
 
 const getProductByIdController = async( id ) => {
-  if (typeof id !== 'Object') {
-    id = new mongoose.Types.ObjectId(id);
     const productById = await getProductsByIdDto( id )
     return productById;
-  }; 
+};
+
+const updateProductController = async (req, res) => {
+  try {
+    const updatedProduct = await updateProductDto(id, productToUpdate);
+    return updatedProduct;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const deleteProductByIdController = async (id) => {
-  const deleteProduct = await deleteProductByIdDto(id);
-  return deleteProduct;
+  try {
+    const deletedProduct = await deleteProductByIdDto(id);
+    return {
+      success: true,
+      message: `Product with id ${id} was deleted`,
+      data: deletedProduct
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: `Error deleting product with id ${id}`,
+      error: error.message
+    };
+  }
 };
 
- const deleteProductController = async() => {
-  // comentado por seguridad.
+
+ const deleteAllProductsController = async() => {
+//commented for security reasons.
 //   await deleteAllProductsDto();
 //   return;
 };
 
 
-export  { addProductController, getProductsController, getProductByIdController, deleteProductController, deleteProductByIdController };
+export  { addProductController, getAllProductsController, getProductByIdController, updateProductController, deleteAllProductsController, deleteProductByIdController };

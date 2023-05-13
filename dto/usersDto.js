@@ -1,8 +1,7 @@
-import {getDao}from '../class/factoryClasses.js';
+import {getDao}from '../dao/factoryClasses.js';
 
 const mapUser = (user) => user ?
   ({
-    id: user._id,
     username: user.username,
     password: user.password,
     email: user.email,
@@ -21,18 +20,16 @@ const getUsersDto = async() => {
 
 const getUserByUsernameDto = async(username) => {
   const  dao =   await getDao();
- 
   const returnedUser = await dao.users.getUserByUsername(username);
-  
   return mapUser(returnedUser);
-}
+};
 
 
 const createUserDto = async (user) => {
       const dao = await getDao();
       const newUser = await dao.users.saveUser({
           ...user,
-          createdAt: new Date(),
+          createdAt: new Date().toLocaleString(),
         });
       
       return mapUser(newUser);
