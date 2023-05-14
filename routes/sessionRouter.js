@@ -16,7 +16,7 @@ sessRouter.use(passport.initialize());
 sessRouter.use(passport.session());
 
 const upload = multer.diskStorage({
-    destination: '../public/uploads',
+    destination: './public/uploads',
     filename: (req,file,cb) => {
       cb( null, `${req.params.id}.${file.originalname.split('.').pop()}`)
     }

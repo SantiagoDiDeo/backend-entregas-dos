@@ -27,22 +27,4 @@ export class ProdMemoryDao {
     users = [];
     return users;
   };
-
 };
-
-
-
-
-
-//   deleteAll() {
-//     this.schema = [];
-//     return;
-//   };
-
-
-
-// };
-
-// const ProductsMemory = new Container(productModel);
-
-// export default ProductsMemory;

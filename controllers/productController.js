@@ -2,21 +2,20 @@ import { getAllProductsDto, getProductsByIdDto, deleteAllProductsDto, addProduct
 
 const validateObject = ( object ) => { 
   return Object.values(object).includes('')
-}
+};
 
 
 const imageUrl = ( url ) => {
-  const ext = /(\.jpg|\.jpeg|\.png|\.gif)$/i
-  return ext.test( url )
-}
-
+  const ext = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+  return ext.test( url );
+};
 
 const addProductController = async ( productToAdd ) => {
   try {
     const newProduct = await addProductDto( productToAdd);
     return newProduct;
   } catch (error) {
-    throw new Error(`${error}, non-added product`)
+    throw new Error(`${error}, non-added product`);
   };
 };
 
@@ -29,7 +28,7 @@ const getAllProductsController = async() => {
 };
 
 const getProductByIdController = async( id ) => {
-    const productById = await getProductsByIdDto( id )
+    const productById = await getProductsByIdDto( id );
     return productById;
 };
 
@@ -39,7 +38,7 @@ const updateProductController = async (req, res) => {
     return updatedProduct;
   } catch (error) {
     console.error(error);
-  }
+  };
 };
 
 const deleteProductByIdController = async (id) => {
@@ -56,11 +55,11 @@ const deleteProductByIdController = async (id) => {
       message: `Error deleting product with id ${id}`,
       error: error.message
     };
-  }
+  };
 };
 
 
- const deleteAllProductsController = async() => {
+const deleteAllProductsController = async() => {
 //commented for security reasons.
 //   await deleteAllProductsDto();
 //   return;

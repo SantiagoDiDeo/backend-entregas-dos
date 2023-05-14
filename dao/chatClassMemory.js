@@ -3,16 +3,14 @@ import  normalizedData  from '../normalizr/normalizr.js';
 
 let chat = [];
 
-export class Container { 
-
+export class Container {
     constructor( schema ) {
         this.schema = schema;
     };
 
   getArray() {
     return normalizedData(this.schema.chat)
-  }
- 
+  };
 
   async add( message ) {
     await this.schema.chat.push({
@@ -31,8 +29,6 @@ export class Container {
       });
     return;
   };
-
-
 };
 
 const ChatsMemory = new Container (chatModel);

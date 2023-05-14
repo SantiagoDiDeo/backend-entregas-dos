@@ -14,7 +14,7 @@ export class UserMemoryDao {
   getUserByUsername = async (username) => {
     const user = users.find((user) => user.username === username);
     return user;
-  }
+  };
 
   deleteUser = async (id) => {
     const user = users.find((user) => user.id === id);
@@ -23,5 +23,4 @@ export class UserMemoryDao {
     }
     return user;
   };
-
 };
